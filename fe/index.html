@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="  https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js"></script>
+
+  <body>
+    <p>https://www.runoob.com/vue2/vue-install.html </p>
+    <p>https://cn.vuejs.org/v2/guide/index.html#%E8%B5%B7%E6%AD%A5</p>
+    <div id="app">
+      {{ message }}<br /><hr /> 傳統表單 form-data
+
+      <form action="http://localhost:1688/txt" method="post" ref="form1">
+        <div>
+          <label for="name">Enter your name: </label>
+          <input v-model="name" type="text" name="name" id="name" required />
+        </div>
+        <div>
+          <label for="email">Enter your email: </label>
+          <input v-model="email" name="email" id="email" required />
+          <br />
+          <input v-model="message" id="message" required />
+        </div>
+        <div>
+          <input type="submit" value="Subscribe!" />
+        </div>
+      </form>
+      <hr /><hr /><hr /><hr />
+
+      <button @click="submit()">call vue</button>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          name: 'name!',
+          email: 'email!',
+          message: 'Hello Vue!',
+        },
+        methods: {
+          submit() {
+            const alertData = [this.name, this.email, this.message];
+            alert(alertData);
+            this.$refs.form1.submit();
+          },
+        },
+        watch: {
+          message(value) {
+            console.log(value);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
